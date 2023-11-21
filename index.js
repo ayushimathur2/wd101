@@ -1,7 +1,7 @@
-let userData = [];
+let userEntries = [];
 
 // Function to validate the form
-const submitForm = () => {
+const validateForm = () => {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -36,7 +36,7 @@ const submitForm = () => {
 const saveUserForm = (event) => {
   event.preventDefault();
 
-  if (!submitForm()) {
+  if (!validateForm()) {
     return;
   }
 
@@ -54,9 +54,9 @@ const saveUserForm = (event) => {
     acceptedTermsAndConditions: acceptedTermsAndConditions,
   };
 
-  userData.push(entry);
+  userEntries.push(entry);
 
-  localStorage.setItem("user-entries", JSON.stringify(userData));
+  localStorage.setItem("user-entries", JSON.stringify(userEntries));
 
   displayUserEntries();
 
@@ -102,7 +102,7 @@ const displayUserEntries = () => {
   });
   table.appendChild(headerRow);
 
-  userData.forEach((entry) => {
+  userEntries.forEach((entry) => {
     const row = document.createElement("tr");
     const columns = [entry.name, entry.email, entry.password, entry.dob, entry.acceptedTermsAndConditions];
     columns.forEach((column) => {
@@ -118,7 +118,7 @@ const displayUserEntries = () => {
 
 // Retrieve stored entries on page load
 const storedEntries = localStorage.getItem("user-entries");
-userData = storedEntries ? JSON.parse(storedEntries) : [];
+userEntries = storedEntries ? JSON.parse(storedEntries) : [];
 
 // Display the entries on page load
 displayUserEntries();
