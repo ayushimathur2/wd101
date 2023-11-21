@@ -94,7 +94,7 @@ const displayUserEntries = () => {
   table.classList.add("user-table");
 
   const headerRow = document.createElement("tr");
-  const headerColumns = ["Name", "Email", "Password", "Dob", "Accepted terms"];
+  const headerColumns = ["Name", "Email", "Password", "Dob", "Accepted terms?"];
   headerColumns.forEach((column) => {
     const th = document.createElement("th");
     th.textContent = column;
